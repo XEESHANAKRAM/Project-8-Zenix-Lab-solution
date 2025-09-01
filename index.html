@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenix Labs Solutions - Digital Innovation & Technology Leaders</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Glassmorphism Effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        /* Hero Background Animation */
+        .hero-bg {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Card Hover Effects */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Logo Animation */
+        .logo-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Custom Gradients */
+        .gradient-blue {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-purple {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .gradient-green {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .gradient-orange {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .gradient-teal {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Statistics Counter Animation */
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        /* Team Member Card */
+        .team-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .team-card:hover .team-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* Process Steps */
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .process-step:last-child::before {
+            display: none;
+        }
+        
+        /* Testimonial Card */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Tech Stack Icons */
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-bg {
+                padding: 60px 0;
+            }
+            
+            .counter {
+                font-size: 2rem;
+            }
+        }
+        
+        /* PDF Optimization */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            .hero-bg {
+                background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c) !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                        <span class="text-white font-bold text-lg">Z</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800 font-poppins">Zenix Labs</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Portfolio</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#team" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Team</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                </div>
+                
+                <button class="btn-primary text-white px-6 py-2 rounded-lg font-medium">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex items-center min-h-screen">
+                <div class="w-full lg:w-1/2" data-aos="fade-right">
+                    <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6 font-poppins leading-tight">
+                        Digital Innovation
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-400">
+                            That Transforms
+                        </span>
+                    </h1>
+                    <p class="text-xl text-white mb-8 leading-relaxed">
+                        We create cutting-edge digital solutions that propel your business into the future. From AI-powered applications to robust cybersecurity, we deliver excellence at every touchpoint.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Start Your Project
+                        </button>
+                        <button class="glass text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-800 transition-all">
+                            <i class="fas fa-play mr-2"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2 hidden lg:block" data-aos="fade-left">
+                    <div class="relative">
+                        <div class="w-96 h-96 gradient-blue rounded-full opacity-20 absolute top-10 right-10 float"></div>
+                        <div class="w-64 h-64 gradient-purple rounded-full opacity-30 absolute top-32 right-32 float" style="animation-delay: -2s;"></div>
+                        <div class="w-48 h-48 gradient-green rounded-full opacity-25 absolute top-48 right-16 float" style="animation-delay: -4s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <p class="text-gray-600 font-semibold">Trusted by industry leaders worldwide</p>
+            </div>
+            
+            <div class="overflow-hidden">
+                <div class="logo-scroll flex space-x-12 items-center">
+                    <div class="flex items-center space-x-12 min-w-full">
+                        <div class="text-4xl font-bold text-gray-400">Microsoft</div>
+                        <div class="text-4xl font-bold text-gray-400">Google</div>
+                        <div class="text-4xl font-bold text-gray-400">Amazon</div>
+                        <div class="text-4xl font-bold text-gray-400">Apple</div>
+                        <div class="text-4xl font-bold text-gray-400">Meta</div>
+                        <div class="text-4xl font-bold text-gray-400">Tesla</div>
+                        <div class="text-4xl font-bold text-gray-400">Netflix</div>
+                        <div class="text-4xl font-bold text-gray-400">Spotify</div>
+                    </div>
+                    <div class="flex items-center space-x-12 min-w-full">
+                        <div class="text-4xl font-bold text-gray-400">Microsoft</div>
+                        <div class="text-4xl font-bold text-gray-400">Google</div>
+                        <div class="text-4xl font-bold text-gray-400">Amazon</div>
+                        <div class="text-4xl font-bold text-gray-400">Apple</div>
+                        <div class="text-4xl font-bold text-gray-400">Meta</div>
+                        <div class="text-4xl font-bold text-gray-400">Tesla</div>
+                        <div class="text-4xl font-bold text-gray-400">Netflix</div>
+                        <div class="text-4xl font-bold text-gray-400">Spotify</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">Our Expert Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We deliver comprehensive digital solutions that drive innovation and accelerate your business growth across multiple technology domains.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Website Development -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Website Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Custom websites, e-commerce platforms, CMS integration, performance optimization, and SEO-ready designs that convert visitors into customers.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Custom Web Applications</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>E-commerce Solutions</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>CMS Integration</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>SEO Optimization</li>
+                    </ul>
+                    <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile App Development -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 gradient-purple rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Mobile App Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Android & iOS apps, cross-platform solutions, UI/UX-focused designs, and app performance optimization for superior user experiences.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Native iOS & Android</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Cross-Platform Apps</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>UI/UX Design</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Performance Optimization</li>
+                    </ul>
+                    <button class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- DevOps Services -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 gradient-green rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">DevOps Services</h3>
+                    <p class="text-gray-600 mb-6">
+                        CI/CD pipelines, cloud infrastructure automation, Kubernetes, Docker, Terraform, and AWS/Azure solutions for scalable operations.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>CI/CD Pipelines</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cloud Infrastructure</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Kubernetes & Docker</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>AWS/Azure Solutions</li>
+                    </ul>
+                    <button class="text-green-600 font-semibold hover:text-green-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- Cybersecurity Solutions -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 gradient-orange rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Cybersecurity Solutions</h3>
+                    <p class="text-gray-600 mb-6">
+                        Penetration testing, vulnerability assessment, endpoint security, cloud security, and compliance management for comprehensive protection.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Penetration Testing</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Vulnerability Assessment</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Endpoint Security</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Compliance Management</li>
+                    </ul>
+                    <button class="text-orange-600 font-semibold hover:text-orange-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- AI Solutions -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 gradient-teal rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">AI Solutions</h3>
+                    <p class="text-gray-600 mb-6">
+                        AI chatbots, machine learning models, data analytics, automation workflows, and AI-driven business intelligence for smart operations.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-teal-500 mr-2"></i>AI Chatbots</li>
+                        <li><i class="fas fa-check text-teal-500 mr-2"></i>Machine Learning</li>
+                        <li><i class="fas fa-check text-teal-500 mr-2"></i>Data Analytics</li>
+                        <li><i class="fas fa-check text-teal-500 mr-2"></i>Business Intelligence</li>
+                    </ul>
+                    <button class="text-teal-600 font-semibold hover:text-teal-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- Consultation Services -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Digital Consultation</h3>
+                    <p class="text-gray-600 mb-6">
+                        Strategic technology consulting, digital transformation roadmaps, architecture reviews, and innovation advisory services.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i>Tech Strategy</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i>Digital Transformation</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i>Architecture Review</li>
+                        <li><i class="fas fa-check text-indigo-500 mr-2"></i>Innovation Advisory</li>
+                    </ul>
+                    <button class="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 gradient-blue">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center text-white">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter">150+</div>
+                    <p class="text-xl font-medium">Projects Delivered</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter">50+</div>
+                    <p class="text-xl font-medium">Happy Clients</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter">5+</div>
+                    <p class="text-xl font-medium">Years Experience</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <div class="counter">24/7</div>
+                    <p class="text-xl font-medium">Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">Featured Projects</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover how we've helped businesses transform their digital presence with innovative solutions and cutting-edge technology.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="service-card bg-gray-50 rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Built a scalable e-commerce platform with advanced AI recommendations, real-time analytics, and multi-payment gateway integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">MongoDB</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">AWS</span>
+                        </div>
+                        <button class="btn-primary text-white px-6 py-3 rounded-lg font-medium">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="service-card bg-gray-50 rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Healthcare Mobile App</h3>
+                        <p class="text-gray-600 mb-4">
+                            Developed a comprehensive healthcare app with telemedicine features, appointment booking, and patient management system.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Flutter</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">AI/ML</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Cloud</span>
+                        </div>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="service-card bg-gray-50 rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-64 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">AI Analytics Dashboard</h3>
+                        <p class="text-gray-600 mb-4">
+                            Created an intelligent analytics dashboard with machine learning insights, predictive analytics, and real-time data visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">TensorFlow</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">D3.js</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Docker</span>
+                        </div>
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="service-card bg-gray-50 rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-64 bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 font-poppins">Cybersecurity Solution</h3>
+                        <p class="text-gray-600 mb-4">
+                            Implemented enterprise-grade cybersecurity infrastructure with threat detection, incident response, and compliance monitoring.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Security</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Monitoring</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Compliance</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">SOC</span>
+                        </div>
+                        <button class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                            View Case Study
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="w-full h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user-tie text-4xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">Zeeshan</h3>
+                            <p class="text-lg">Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">About Zenix Labs</h2>
+                    <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                        Founded by visionary entrepreneur Zeeshan, Zenix Labs Solutions stands at the forefront of digital innovation. We are a dynamic technology company dedicated to transforming businesses through cutting-edge digital solutions.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our expertise spans across multiple domains including web development, mobile applications, DevOps automation, cybersecurity, and artificial intelligence. We believe in creating solutions that not only meet current needs but anticipate future challenges.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Our Mission</h4>
+                            <p class="text-gray-600">Empowering businesses with innovative technology solutions that drive growth and success.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">Our Vision</h4>
+                            <p class="text-gray-600">To be the global leader in digital transformation and technology innovation.</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary text-white px-8 py-4 rounded-lg font-semibold">
+                        <i class="fas fa-calendar mr-2"></i>
+                        Schedule a Meeting
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">Our Technology Stack</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We leverage the latest and most powerful technologies to build robust, scalable, and future-ready solutions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="tech-icon gradient-blue" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-react"></i>
+                </div>
+                <div class="tech-icon gradient-purple" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-node-js"></i>
+                </div>
+                <div class="tech-icon gradient-green" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="tech-icon gradient-orange" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fab fa-aws"></i>
+                </div>
+                <div class="tech-icon gradient-teal" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fab fa-docker"></i>
+                </div>
+                <div class="tech-icon bg-gradient-to-r from-indigo-500 to-purple-500" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-database"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our diverse team of experts brings together years of experience in cutting-edge technologies and innovative solutions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-80 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Sarah Johnson</h3>
+                        <p class="text-blue-600 font-medium mb-3">Lead Full Stack Developer</p>
+                        <p class="text-gray-600 text-sm">Expert in React, Node.js, and cloud architectures with 8+ years of experience.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-80 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                        <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Michael Chen</h3>
+                        <p class="text-green-600 font-medium mb-3">DevOps Engineer</p>
+                        <p class="text-gray-600 text-sm">Specialized in Kubernetes, Docker, and CI/CD pipelines with AWS expertise.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card relative bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-80 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                        <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Emily Rodriguez</h3>
+                        <p class="text-purple-600 font-medium mb-3">AI/ML Specialist</p>
+                        <p class="text-gray-600 text-sm">PhD in Machine Learning with expertise in TensorFlow and data science.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 gradient-blue">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-bold text-white mb-6 font-poppins">Client Testimonials</h2>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    Don't just take our word for it. Here's what our clients say about working with Zenix Labs Solutions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-white mb-6 italic">
+                        "Zenix Labs delivered an exceptional mobile app that exceeded our expectations. Their attention to detail and innovative approach transformed our business."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">David Thompson</h4>
+                            <p class="text-blue-200 text-sm">CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-white mb-6 italic">
+                        "The cybersecurity solution they implemented gave us complete peace of mind. Professional, reliable, and incredibly knowledgeable team."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Lisa Wang</h4>
+                            <p class="text-blue-200 text-sm">CTO, SecureFlow</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-white mb-6 italic">
+                        "Our AI-powered analytics dashboard has revolutionized how we understand our data. Zenix Labs is truly innovative."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Robert Martinez</h4>
+                            <p class="text-blue-200 text-sm">Director, DataViz Pro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-6 font-poppins">Get In Touch</h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Ready to transform your business with innovative technology solutions? Let's discuss your project and create something amazing together.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-blue rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">hello@zenixlabs.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-green rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 gradient-purple rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Location</h4>
+                                <p class="text-gray-600">Global Services Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <form class="glass rounded-2xl p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <input type="text" placeholder="Subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6">
+                        
+                        <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"></textarea>
+                        
+                        <button type="submit" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold w-full">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-lg">Z</span>
+                        </div>
+                        <span class="text-xl font-bold font-poppins">Zenix Labs</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Empowering businesses with innovative digital solutions and cutting-edge technology.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Web Development</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Mobile Apps</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">DevOps</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cybersecurity</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">AI Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Zenix Labs Solutions. All rights reserved. Built with 💙 by Zeeshan.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white', 'shadow-lg');
+                nav.classList.remove('glass');
+            } else {
+                nav.classList.remove('bg-white', 'shadow-lg');
+                nav.classList.add('glass');
+            }
+        });
+        
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = counter.innerText;
+                const numericTarget = parseInt(target.replace(/\D/g, ''));
+                const suffix = target.replace(/[\d]/g, '');
+                
+                let current = 0;
+                const increment = numericTarget / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericTarget) {
+                        counter.innerText = numericTarget + suffix;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.floor(current) + suffix;
+                    }
+                }, 40);
+            });
+        }
+        
+        // Trigger counter animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        const statsSection = document.querySelector('.counter').closest('section');
+        if (statsSection) observer.observe(statsSection);
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Mobile menu toggle (if needed)
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
