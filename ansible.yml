@@ -3,9 +3,11 @@
   become: true
   tasks:
     - name: Create new deployment
-      command: kubectl apply -f /home/ubuntu/zenix/deployment.yml
+      command: kubectl apply -f /home/ubuntu/zenix/deployment.yml --kubeconfig /home/ubuntu/.kube/config
 
     - name: Create new service
-      command: kubectl apply -f /home/ubuntu/zenix/services.yml
+      command: kubectl apply -f /home/ubuntu/zenix/services.yml --kubeconfig /home/ubuntu/.kube/config
+
+
 
 
