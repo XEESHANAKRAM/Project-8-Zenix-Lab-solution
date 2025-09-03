@@ -1,4 +1,5 @@
 - hosts: k8s
+  remote_user: ubuntu
   become: true
   tasks:
     - name: Create new deployment
@@ -6,4 +7,5 @@
 
     - name: Create new service
       command: kubectl apply -f /home/ubuntu/zenix/services.yml
+
 
